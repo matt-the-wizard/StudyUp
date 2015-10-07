@@ -22,5 +22,6 @@ test:
 
 production:
   <<: *default
+
   adapter: postgresql
   database: study_app_production
