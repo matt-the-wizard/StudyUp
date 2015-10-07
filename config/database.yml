@@ -22,8 +22,6 @@ test:
 
 production:
   <<: *default
-  adapter:  postgresql
-  encoding: unicode
-  database: studyup_test
-  username: studyupggc
-  password: supersecret
+
+  adapter: postgresql
+  database: study_app_production
