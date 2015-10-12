@@ -1,6 +1,5 @@
 class StudentsController < ApplicationController
   def index
-    render text: 'Student index'
   end
 
   def show
@@ -13,5 +12,9 @@ class StudentsController < ApplicationController
   end
 
   def create
+  end
+
+  def new
+    @student = Student.new
   end
 end

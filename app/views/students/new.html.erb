@@ -1,1 +1,28 @@
-<h1>Create your account</h1>
+<div class="container-fluid">
+  <h1>Create Account</h1>
+  <hr>
+  <%= form_for @student do |f| %>
+    <%= f.label 'Username:' %>
+    <br>
+    <%= f.text_field :username %>
+    <br>
+    <%= f.label 'Password:' %>
+    <br>
+    <%= f.text_field :password_digest %>
+    <br>
+    <%= f.label 'First Name:' %>
+    <br>
+    <%= f.text_field :first_name %>
+    <br>
+    <%= f.label 'Last Name:' %>
+    <br>
+    <%= f.text_field :last_name %>
+    <br>
+    <%= f.label 'Institution:' %>
+    <br>
+    <%= f.text_field :institution %>
+    <br>
+    <%= f.submit %>
+    <%= link_to 'Cancel', root_path %>
+  <% end %>
+</div>
