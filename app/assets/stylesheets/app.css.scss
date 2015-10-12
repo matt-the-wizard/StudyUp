@@ -1,0 +1,32 @@
+@import "bootstrap";
+@import "bootstrap-sprockets";
+
+body {
+  background-color: green;
+  padding-top: 10%;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+.home-buttons a {
+  background-color: black;
+  border-color: black;
+}
+
+.home-buttons a:hover {
+  background-color: green;
+}

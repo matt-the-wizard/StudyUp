@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-   root 'student#index'
+   root 'home#home'
 
-   resources :student, :only => [ :index, :update, :destroy, :show, :create, :show ]
+   resources :students, :only => [ :index, :update, :destroy, :show, :create, :show ]
 
 end
