@@ -1,1 +1,6 @@
 <p>Index page</p>
+
+<% @students.each do |student| %>
+  <label><%= student.first_name %></label>
+  <hr>
+<% end %>

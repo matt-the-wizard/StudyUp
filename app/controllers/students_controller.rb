@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
+
   def index
+    @students = Student.all
   end
 
   def show
@@ -24,9 +26,9 @@ class StudentsController < ApplicationController
   def new
     @student = Student.new
   end
-  
-  private 
-  
+
+  private
+
   def _student_params
     params.require(:student).permit(:first_name,
                                     :last_name,
@@ -35,5 +37,5 @@ class StudentsController < ApplicationController
                                     :institution,
                                     :school_of_study,
                                     :discipline)
-  end 
+  end
 end
