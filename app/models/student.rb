@@ -9,5 +9,7 @@ class Student < ActiveRecord::Base
   validates_presence_of :username
   validates_presence_of :password_digest
   validates_presence_of :institution
+  
+  has_secure_password
 
 end
