@@ -1,4 +1,4 @@
-class StudentController < ActionController::Base
+class StudentsController < ApplicationController
   def index
     render text: 'Student index'
   end
