@@ -1,7 +1,10 @@
 class StudentsController < ApplicationController
 
   def index
-    @students = Student.all
+    @students = Student.all.limit(30)
+    # Handle search
+    # Handle find more
+    # Paging gem?
   end
 
   def show
@@ -25,6 +28,10 @@ class StudentsController < ApplicationController
 
   def new
     @student = Student.new
+  end
+
+  def search
+    #@students = Student.search params[:student_search]
   end
 
   private

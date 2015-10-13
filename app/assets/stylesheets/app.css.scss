@@ -33,4 +33,14 @@ textarea {
 
 .container-fluid {
   background-color: white;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.table th {
+  text-align: center;
+}
+
+.table tr:hover {
+   background-color: #C8C8C8;
 }
