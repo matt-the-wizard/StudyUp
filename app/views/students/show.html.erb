@@ -1,14 +1,21 @@
 <div class="container-fluid">
-  <h1>Student # <%= @student.id %></h1>
+  <h1><%= @student.first_name %> <%= @student.last_name %></h1>
   <hr>
-  <p>First Name: 
-  <%= @student.first_name %>
-  <p>Last Name:
-  <%= @student.last_name %></p>
-  <p>Institution:
-  <%= @student.institution %></p>
-  <p>School Of Study:
-  <%= @student.school_of_study %></p>
-  <p>Discipline:
-  <%= @student.discipline %></p>
+  <div class="container-left">
+    <p>Institution:
+    <%= @student.institution %></p>
+
+    <p>School Of Study:
+    <%= @student.school_of_study %></p>
+
+    <p>Discipline:
+    <%= @student.discipline %></p>
+
+    <p>Phone Number:
+    <%= @student.phone_number %></p>
+  </div>
+  <div class="home-buttons">
+    <%= link_to 'Edit', {controller: 'students', action: 'edit'}, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+    <%= link_to 'View Students', {controller: 'students', action: 'index'}, :class => "btn btn-lg btn-primary", :style => 'float: right;' %>
+  </div>
 </div>

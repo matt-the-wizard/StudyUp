@@ -22,6 +22,15 @@ textarea {
   margin-bottom: 10px;
 }
 
+.home-buttons input {
+  background-color: black;
+  border-color: black;
+}
+
+.home-buttons input:hover {
+  background-color: green;
+}
+
 .home-buttons a {
   background-color: black;
   border-color: black;
@@ -43,4 +52,19 @@ textarea {
 
 .table tr:hover {
    background-color: #C8C8C8;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
 }

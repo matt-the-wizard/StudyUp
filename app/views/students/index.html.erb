@@ -8,6 +8,9 @@
       <button class="btn" type="submit">Search</button>
     </div>
   <% end %>
+  <div class="home-buttons">
+    <%= link_to 'New', {controller: 'students', action: 'new'}, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+  </div>
 </div>
 <table class="table">
   <thead>
