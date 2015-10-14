@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
    root 'home#home'
 
-   resources :students, :only => [ :index, :update, :destroy, :show, :create, :show ]
+   resources :students, :only => [ :index, :create, :update, :show, :destroy, :new, :edit ] do
+     get :search
+   end
 
 end
