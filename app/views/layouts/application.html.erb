@@ -16,7 +16,10 @@
         <nav>
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to "Home",   root_path %></li>
+            <% if logged_in? %>
+            <%  else %>
             <li><%= link_to "Log in", '#' %></li>
+            <%  end %>
             <li><%= link_to "Students", { controller: "students", action: "index" } %></li>
             <li><%= link_to "Study Groups", '#' %></li>
             <li><%= link_to "Study Sessions", '#' %></li>
