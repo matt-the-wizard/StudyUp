@@ -15,7 +15,11 @@
     <%= @student.phone_number %></p>
   </div>
   <div class="home-buttons">
-    <%= link_to 'Edit', {controller: 'students', action: 'edit'}, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+    <% if current_student.present? && current_student.id ==  @student.id %>
+      <%= link_to 'Edit', {controller: 'students', action: 'edit'}, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+    <% else %>
+    <%= link_to 'Invite to Group', "#", :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+    <% end %>
     <%= link_to 'View Students', {controller: 'students', action: 'index'}, :class => "btn btn-lg btn-primary", :style => 'float: right;' %>
   </div>
 </div>

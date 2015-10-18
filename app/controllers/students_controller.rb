@@ -47,6 +47,7 @@ class StudentsController < ApplicationController
     @student = Student.new _student_params
     if @student.save
       flash[:success] = "Account created successfully!"
+      log_in @student
       redirect_to @student
     else
       flash[:error] = "There was an error creating your account."
