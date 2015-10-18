@@ -29,6 +29,7 @@ textarea {
 
 .home-buttons input:hover {
   background-color: green;
+  border-color: green;
 }
 
 .home-buttons a {
@@ -38,6 +39,7 @@ textarea {
 
 .home-buttons a:hover {
   background-color: green;
+  border-color: green;
 }
 
 .container-fluid {
@@ -67,4 +69,18 @@ textarea {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }

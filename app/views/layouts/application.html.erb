@@ -16,7 +16,12 @@
         <nav>
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to "Home",   root_path %></li>
-            <li><%= link_to "Log in", '#' %></li>
+            <% if logged_in? %>
+            <li><%= link_to "Profile", current_student %></li>
+            <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+            <%  else %>
+            <li><%= link_to "Log in", login_path %></li>
+            <%  end %>
             <li><%= link_to "Students", { controller: "students", action: "index" } %></li>
             <li><%= link_to "Study Groups", '#' %></li>
             <li><%= link_to "Study Sessions", '#' %></li>
