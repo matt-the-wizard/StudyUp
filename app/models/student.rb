@@ -9,8 +9,11 @@ class Student < ActiveRecord::Base
   validates_presence_of :institution
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[edu]+\z/i
-  validates :username, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
+  validates         :username,
+                    presence: true,
+                    length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX,
+                    message: "Must have a valide .edu email address." },
                     uniqueness: { case_sensitive: false }
 
   before_save { self.username = username.downcase }
