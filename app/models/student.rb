@@ -42,7 +42,11 @@ class Student < ActiveRecord::Base
   end
 
   def self.search(params)
-    # TODO: Implement searchable query
+    if params[:filter] == "First Name"
+      return Student.where("first_name LIKE '%#{params[:search]}%'").to_a
+    else
+      return Student.where("last_name LIKE '%#{params[:search]}%'").to_a
+    end
   end
 
 end

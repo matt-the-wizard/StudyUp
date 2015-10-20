@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'home#home'
   resources :students, :only => [ :index, :create, :update, :show, :destroy, :new, :edit ] do
-   get :search
+   get 'search' => 'students#search', on: :collection
   end
   # Session management
   get    'login'   => 'sessions#new'
