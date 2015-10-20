@@ -17,6 +17,9 @@ class Student < ActiveRecord::Base
 
   has_secure_password
 
+  FIRST_NAME_FILTER = "First Name"
+  LAST_NAME_FILTER  = "Last Name"
+
   def Student.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
@@ -42,10 +45,12 @@ class Student < ActiveRecord::Base
   end
 
   def self.search(params)
-    if params[:filter] == "First Name"
+    if params[:filter] == FIRST_NAME_FILTER
       return Student.where("first_name LIKE '%#{params[:search]}%'").to_a
-    else
+    elsif params[:filter] == LAST_NAME_FILTER
       return Student.where("last_name LIKE '%#{params[:search]}%'").to_a
+    else
+      return Student.where("institution LIKE '%#{params[:search]}%'").to_a
     end
   end
 
