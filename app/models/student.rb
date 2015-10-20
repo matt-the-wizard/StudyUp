@@ -13,8 +13,13 @@ class Student < ActiveRecord::Base
                     presence: true,
                     length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX,
-                    message: "Must have a valide .edu email address." },
+                    message: "must have a valid .edu email address, Ex: sally@ggc.edu" },
                     uniqueness: { case_sensitive: false }
+
+  # TODO: add password validation based on requirements
+  # validates        :password_digest,
+  #                  presence: true,
+  #                  lenght: { minimum: 6 },
 
   before_save { self.username = username.downcase }
 
