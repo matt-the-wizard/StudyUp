@@ -37,16 +37,16 @@ RSpec.describe Student, :type => :model do
   end
 
   it "students username should be in the format of a school email ending with .edu" do
-    # @student.username = "sally@gmail.com"
-    # expect(@student.valid?.to be false
-    # @student.username = "sally@yahoo.com"
-    # expect(@student.valid?.to be false
-    # @student.username = "sally@uga.org"
-    # expect(@student.valid?.to be false
-    # @student.username = "sally@ggc"
-    # expect(@student.valid?.to be false
-    # @student.username = "sally@uga.edu"
-    # expect(@student.valid?).to be true
+    @student.username = "sally@gmail.com"
+    expect(@student.valid?).to be false
+    @student.username = "sally@yahoo.com"
+    expect(@student.valid?).to be false
+    @student.username = "sally@uga.org"
+    expect(@student.valid?).to be false
+    @student.username = "sally@ggc"
+    expect(@student.valid?).to be false
+    @student.username = "sally@uga.edu"
+    expect(@student.valid?).to be true
   end
 
   it "username must be unique across all students" do
