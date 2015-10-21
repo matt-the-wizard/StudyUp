@@ -23,7 +23,7 @@
             <li><%= link_to "Log in", login_path %></li>
             <%  end %>
             <li><%= link_to "Students", { controller: "students", action: "index" } %></li>
-            <li><%= link_to "Study Groups", '#' %></li>
+            <li><%= link_to "Study Groups", { controller: "study_groups", action: "new" } %></li>
             <li><%= link_to "Study Sessions", '#' %></li>
           </ul>
         </nav>
