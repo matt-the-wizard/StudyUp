@@ -29,6 +29,7 @@ class Student < ActiveRecord::Base
 
   FIRST_NAME_FILTER = "First Name"
   LAST_NAME_FILTER  = "Last Name"
+  INSTITUTION_FILTER  = "Institution"
 
   def Student.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

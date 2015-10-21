@@ -1,15 +1,8 @@
-<p> Implement edit group page</p>
 <div class="container-fluid">
-  <h1>Edit Profile</h1>
+  <h1>Edit Study Group</h1>
   <hr>
-  <%= render 'shared/student_error_messages' %>
+  <%= render 'shared/study_group_error_messages' %>
   <%= form_for @study_group do |f| %>
-    <!-- <%= f.label 'Username:' %>
-    <%= f.text_field :username %>
-    <br>
-    <%= f.label 'Password:' %>
-    <%= f.text_field :password_digest %>
-    <br> -->
     <%= f.label 'Topic:' %>
     <%= f.text_field :topic %>
     <br>
