@@ -2,6 +2,8 @@ class Student < ActiveRecord::Base
 
   attr_accessor :remember_token
 
+  has_many :study_groups
+
   validates_presence_of :first_name
   validates_presence_of :last_name
   validates_presence_of :username
@@ -27,6 +29,7 @@ class Student < ActiveRecord::Base
 
   FIRST_NAME_FILTER = "First Name"
   LAST_NAME_FILTER  = "Last Name"
+  INSTITUTION_FILTER  = "Institution"
 
   def Student.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
