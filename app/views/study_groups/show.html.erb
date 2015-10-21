@@ -1,1 +1,21 @@
 <p>Implement group show page</p>
+<div class="container-fluid">
+  <h1><%= @study_group.first_name %> <%= @study_group.last_name %></h1>
+  <hr>
+  <div class="container-left">
+    <p>Topic:
+    <%= @study_group.topic %></p>
+
+    <p>title:
+    <%= @study_group.title %></p>
+  </div>
+  <!-- <div class="home-buttons">
+    <% if current_study_group.present? && current_study_group.id ==  @study_group.id %> -->
+      <!-- <%= link_to 'Edit', {controller: 'study_groups', action: 'edit'}, :class => "btn btn-lg btn-primary", :style => 'float: left;' %> -->
+      <!-- <%= link_to 'Delete', @study_group, method: :delete, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+    <% else %>
+    <%= link_to 'Invite to Group', "#", :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+    <% end %> -->
+    <!-- <%= link_to 'View Students', {controller: 'students', action: 'index'}, :class => "btn btn-lg btn-primary", :style => 'float: right;' %>
+  </div>
+</div> -->

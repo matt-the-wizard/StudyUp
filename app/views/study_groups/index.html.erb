@@ -1,1 +1,36 @@
 <p> Implement Group Index page</p>
+<div class="container-fluid">
+<h2>Students</h2>
+<div class="header">
+<%= form_tag( 'study_groups/search', :method => :get, class: "navbar-form", id: "search-form") do %>
+    <div class="input-append">
+      <%= text_field_tag :search, params[:data], class: "span2", placeholder: "Search Study Group" %>
+      <%= select_tag(:filter, options_for_select(['Topic', 'Title']))%>
+      <%= submit_tag("Search") %>
+    </div>
+  <% end %>
+  <div class="home-buttons">
+    <%= link_to 'New', { controller: 'study_groups', action: 'new' }, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <th>Title</th>
+    <th>Topic</th>
+    <!-- <th>Student Limit</th> -->
+    <th></th>
+  </thead>
+  <tbody>
+    <% @study_groups.each do |study_group| %>
+      <tr>
+        <td><%= study_group.title %></td>
+        <td><%= study_group.topic %></td>
+        <td><%= study_group.student_limit %></td>
+        <!-- <td><%= student.institution %></td> -->
+        <td><%= link_to 'View', study_group %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>
