@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_id: MyString
+  integer,: MyString
+  title: MyString
+  string,: MyString
+  topic: MyString
+  string,: MyString
+  institution: MyString
+  string,: MyString
+  student_limit: MyString
+  integer,: MyString
+  admin_student_id: MyString
+  integer: MyString
+
+two:
+  student_id: MyString
+  integer,: MyString
+  title: MyString
+  string,: MyString
+  topic: MyString
+  string,: MyString
+  institution: MyString
+  string,: MyString
+  student_limit: MyString
+  integer,: MyString
+  admin_student_id: MyString
+  integer: MyString
