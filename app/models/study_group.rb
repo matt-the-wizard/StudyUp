@@ -2,6 +2,8 @@ class StudyGroup < ActiveRecord::Base
 
   has_many :students
 
+  belongs_to :admin_student, class_name: 'Student'
+
   validates_presence_of :title
   validates_presence_of :topic
 

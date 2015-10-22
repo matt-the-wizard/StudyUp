@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20151021033918) do
   end
 
   create_table "study_groups", force: :cascade do |t|
-    t.integer  "student_id"
     t.string   "title"
     t.string   "topic"
     t.string   "institution"
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151021033918) do
     t.integer  "admin_student_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "student_id"
   end
 
 end
