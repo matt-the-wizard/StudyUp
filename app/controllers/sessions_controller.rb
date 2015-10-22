@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     student = Student.find_by(username: params[:session][:username].downcase)
-    if student && student.authenticate(params[:session][:password])
+    if student && student.authenticate(params[:session][:password_digest])
       log_in student
       params[:session][:remember_me] == '1' ? remember(student) : forget(student)
       redirect_to student
