@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <h1>Edit Study Group</h1>
+  <hr>
+  <%= render 'shared/study_group_error_messages' %>
+  <%= form_for @study_group do |f| %>
+    <%= f.label 'Topic:' %>
+    <%= f.text_field :topic %>
+    <br>
+    <%= f.label 'Institution:' %>
+    <%= f.text_field :Institution %>
+    <br>
+    <%= f.label 'Student Limit:' %>
+    <%= f.text_field :institution %>
+    <br>
+    <div class="home-buttons">
+      <%= f.submit :class => "btn btn-lg btn-primary" %>
+      <%= link_to 'Cancel', {controller: 'students', action: 'index'}, :class => "btn btn-lg btn-primary" %>
+      <%= link_to 'Delete', {controller: 'students', action: 'destroy'}, :class => "btn btn-lg btn-primary" %>
+    </div>
+  <% end %>
+</div>
