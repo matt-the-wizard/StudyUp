@@ -2,9 +2,9 @@ class StudySessionsController < ApplicationController
 
   def index
     if params[:sessions].present?
-      @study_session = StudySession.search params[:sessions]
+      @study_sessions = StudySession.search params[:sessions]
     else
-      @study_session = StudySession.all.limit(30)
+      @study_sessions = StudySession.all.limit(30)
     end
   end
 
