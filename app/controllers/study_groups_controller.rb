@@ -46,7 +46,8 @@ class StudyGroupsController < ApplicationController
 
   def create
     @study_group = StudyGroup.new _study_group_params
-    @study_group.student_id = @current_student.id if @current_student.present?
+    @study_group.admin_student_id = current_student.id if current_student.present?
+
     if @study_group.save
       flash[:success] = "Study Group created successfully!"
       redirect_to @study_group
@@ -71,10 +72,8 @@ class StudyGroupsController < ApplicationController
 
   def _study_group_params
     params.require(:study_group).permit(:title,
-                                        :student_id,
                                         :topic,
                                         :institution,
-                                        :student_limit,
-                                        :study_group_id)
+                                        :student_limit)
   end
 end
