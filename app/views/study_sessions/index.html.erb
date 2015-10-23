@@ -23,10 +23,10 @@
   <tbody>
     <% @study_sessions.each do |study_session| %>
       <tr>
-        <td><%= study_group.location %></td>
-        <td><%= study_group.day %></td>
-        <td><%= study_group.start_time %></td>
-        <td><%= study_group.end_time %></td>
+        <td><%= study_session.location %></td>
+        <td><%= study_session.day %></td>
+        <td><%= study_session.start_time.strftime("%H:%M %P") %></td>
+        <td><%= study_session.end_time.strftime("%H:%M %P") %></td>
         <td><%= link_to 'View', study_session %></td>
       </tr>
     <% end %>
