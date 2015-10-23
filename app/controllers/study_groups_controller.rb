@@ -23,7 +23,7 @@ class StudyGroupsController < ApplicationController
       redirect_to @study_group
     else
       flash[:error] = "There was an error editing your study group."
-      @student.errors.each do |error|
+      @study_group.errors.each do |error|
         flash[:error] = error.to_s
       end
       render 'edit'
