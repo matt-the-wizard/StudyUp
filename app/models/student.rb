@@ -2,7 +2,7 @@ class Student < ActiveRecord::Base
 
   attr_accessor :remember_token
 
-  has_many :study_groups
+  has_and_belongs_to_many :study_groups
 
   validates_presence_of :first_name
   validates_presence_of :last_name

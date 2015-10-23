@@ -47,7 +47,7 @@ class StudyGroupsController < ApplicationController
   def create
     @study_group = StudyGroup.new _study_group_params
     @study_group.admin_student_id = current_student.id if current_student.present?
-    # current_student.study_group_id    TODO: Identify how to handle has many to has many relationship
+
     if @study_group.save
       flash[:success] = "Study Group created successfully!"
       redirect_to @study_group
@@ -72,10 +72,8 @@ class StudyGroupsController < ApplicationController
 
   def _study_group_params
     params.require(:study_group).permit(:title,
-                                        :student_id,
                                         :topic,
                                         :institution,
-                                        :student_limit,
-                                        :study_group_id)
+                                        :student_limit)
   end
 end
