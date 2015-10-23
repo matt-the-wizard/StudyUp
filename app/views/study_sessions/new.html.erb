@@ -1,3 +1,26 @@
 <div class="container-fluid">
-  <p>TO DO</p>
+  <h1>Create Study Session</h1>
+  <hr>
+  <%= render 'shared/study_session_error_messages' %>
+  <%= form_for @study_session do |f| %>
+    <%= f.label 'Location:' %>
+    <%= f.text_field :location %>
+    <br>
+    <%= f.label 'StartTime:' %>
+    <%= f.time_field( :start_time) %>
+    <br>
+    <%= f.label 'EndTime' %>
+    <%= f.time_field(:end_time) %>
+    <br>
+    <%= f.label 'Day:' %>
+    <%= f.date_field(:day) %>
+    <br>
+    <%= f.label 'Notes:' %>
+    <%= f.text_field :notes %>
+    <br>
+    <div class="home-buttons">
+      <%= f.submit :class => "btn btn-lg btn-primary" %>
+      <%= link_to 'Cancel', {controller: 'study_session', action: 'index'}, :class => "btn btn-lg btn-primary" %>
+    </div>
+  <% end %>
 </div>
