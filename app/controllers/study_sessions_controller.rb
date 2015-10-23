@@ -74,7 +74,7 @@ class StudySessionsController < ApplicationController
                                           :start_time,
                                           :end_time,
                                           :day,
-                                          :study_group_id
+                                          :study_group_id,
                                           :notes)
   end
 end
