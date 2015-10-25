@@ -38,15 +38,20 @@ class StudyGroupsController < ApplicationController
 
   def destroy
     @study_group = StudyGroup.find params[:id]
-    if @study_group.destroy
-      flash[:success] = "Group deleted successfully"
-      redirect_to study_groups_url
-    else
-      flash[:error] = "There was an error deleting your study group."
-      @study_group.errors.each do |error|
-        flash[:error] = error.to_s
+    if @study_group.admin_student.id == current_student.id
+      if @study_group.destroy
+        flash[:success] = "Group deleted successfully"
+        redirect_to study_groups_url
+      else
+        flash[:error] = "There was an error deleting your study group."
+        @study_group.errors.each do |error|
+          flash[:error] = error.to_s
+        end
+        render 'edit'
       end
-      render 'edit'
+    else
+      flash[:error] = 'You cannot edit this group as you do not have admin access.'
+      redirect_to :action => :index
     end
   end
 
