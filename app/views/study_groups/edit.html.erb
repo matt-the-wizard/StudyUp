@@ -7,13 +7,13 @@
     <%= f.text_field :topic %>
     <br>
     <%= f.label 'Institution:' %>
-    <%= f.text_field :Institution %>
-    <br>
-    <%= f.label 'Student Limit:' %>
     <%= f.text_field :institution %>
     <br>
+    <%= f.label 'Student Limit:' %>
+    <%= f.text_field :student_limit %>
+    <br>
     <div class="home-buttons">
-      <%= f.submit :class => "btn btn-lg btn-primary" %>
+      <%= f.submit 'Save', :class => "btn btn-lg btn-primary" %>
       <%= link_to 'Cancel', {controller: 'students', action: 'index'}, :class => "btn btn-lg btn-primary" %>
       <%= link_to 'Delete', {controller: 'students', action: 'destroy'}, :class => "btn btn-lg btn-primary" %>
     </div>
