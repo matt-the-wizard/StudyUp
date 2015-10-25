@@ -7,6 +7,7 @@ class StudyGroup < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :topic
+  validates :student_limit, allow_blank: true, numericality: { only_integer: true }
 
   before_save :_validate_student_limit
   before_save :_assign_admin_student
@@ -23,6 +24,21 @@ class StudyGroup < ActiveRecord::Base
     self.student_limit.to_i - self.students.count.to_i
   end
 
+  def add_student a_student
+    self.students << a_student unless self.students.include? a_student.id
+    self.save!
+  end
+
+  def remove_student a_student
+    # Just need to delete the relationship but not the actual record
+    new_student_list = []
+    self.students.each do |student|
+      new_student_list << student unless student.id == a_student.id
+    end
+    self.students = new_student_list
+    self.save!
+  end
+
   def self.search(params)
     if params[:filter] == TITLE_FILTER
       return StudyGroup.where("title LIKE '%#{params[:search]}%'").to_a
@@ -36,6 +52,7 @@ class StudyGroup < ActiveRecord::Base
   private
 
   def _validate_student_limit
+    return true if self.student_limit.nil?
     if available_space == 0
       errors.add(:students, "The student limit for this group is full, you cannot join this group.")
       return false

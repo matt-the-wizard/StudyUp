@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe StudySession, :type => :model do
   before do
     @study_sessions = StudySession.new location: "Library", day: "2015-12-01",start_time: "02:00 PM",
-  end_time: "03:00 PM"
+                                       end_time: "03:00 PM"
   end
 
   it "study Session should be valid" do

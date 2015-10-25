@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :study_groups, :only => [ :index, :create, :update, :show, :destroy, :new, :edit ] do
    get 'search' => 'study_groups#search', on: :collection
    get 'join'   => 'study_groups#join',   on: :member
+   get 'leave'  => 'study_groups#leave',   on: :member
   end
 
   resources :study_sessions, :only => [ :index, :create, :update, :show, :destroy, :new, :edit ] do
