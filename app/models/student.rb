@@ -31,14 +31,8 @@ class Student < ActiveRecord::Base
   LAST_NAME_FILTER  = "Last Name"
   INSTITUTION_FILTER  = "Institution"
 
-  def Student.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
-
-  def Student.new_token
-    SecureRandom.urlsafe_base64
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def remember
@@ -53,6 +47,16 @@ class Student < ActiveRecord::Base
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def Student.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def Student.new_token
+    SecureRandom.urlsafe_base64
   end
 
   def self.search(params)
