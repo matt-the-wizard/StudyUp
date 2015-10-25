@@ -11,7 +11,6 @@ class StudySession < ActiveRecord::Base
 
 
   def self.search(params)
-    # only search by date for now
-    return StudySession.where("day = #{params[:search].to_formatted_s(:db)}").to_a
+    return StudySession.where(:day => params[:search].first).to_a
   end
 end
