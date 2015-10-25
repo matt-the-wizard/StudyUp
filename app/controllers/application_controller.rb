@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_group
+    unless logged_in? && !current_student.study_groups.empty?
+      flash[:error] = "You must be logged in and have group to use the section"
+      redirect_to search_study_groups
+    end
+  end
 end

@@ -1,5 +1,7 @@
 class StudySessionsController < ApplicationController
 
+  before_action :require_group
+
   def index
     if params[:sessions].present?
       @study_sessions = StudySession.search params[:sessions]

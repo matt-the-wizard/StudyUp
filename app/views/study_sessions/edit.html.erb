@@ -3,6 +3,7 @@
   <hr>
   <%= render 'shared/study_session_error_messages' %>
   <%= form_for @study_session do |f| %>
+    <%= f.collection_select(:study_group_id, current_student.study_groups, :id, :title) %>
     <%= f.label 'Location:' %>
     <%= f.text_field :location %>
     <br>
