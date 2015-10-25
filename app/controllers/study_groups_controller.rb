@@ -81,13 +81,22 @@ class StudyGroupsController < ApplicationController
 
   def join
     @study_group = StudyGroup.find(params[:id])
-    @student = Student.find params[:student_id]
-    @study_group.students << @student
-    if @study_group.save!
+    if @study_group.add_student current_student
       flash[:success] = "You have joined the study group successfully!"
       redirect_to :action => :index
     else
       flash[:error] = "You were unable to join the study group."
+      render 'show'
+    end
+  end
+
+  def leave
+    @study_group = StudyGroup.find(params[:id])
+    if @study_group.remove_student current_student
+      flash[:success] = "You have left the study group successfully!"
+      redirect_to :action => :index
+    else
+      flash[:error] = "You were unable to leave the study group."
       render 'show'
     end
   end

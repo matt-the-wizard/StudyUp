@@ -10,12 +10,13 @@
   </div>
   <div class="home-buttons">
     <% if @study_group.student_in_group? current_student %>
-      <%= link_to 'Leave Group', join_study_group_path(:student_id => current_student.id), :class => "btn btn-lg btn-primary" %>
+      <%= link_to 'Leave Group', leave_study_group_path, :class => "btn btn-lg btn-primary" %>
     <% else %>
-      <%= link_to 'Join Group', join_study_group_path(:student_id => current_student.id), :class => "btn btn-lg btn-primary" %>
+      <%= link_to 'Join Group', join_study_group_path, :class => "btn btn-lg btn-primary" %>
     <% end %>
     <% if @study_group.admin_student.id == current_student.id %>
       <%= link_to 'Edit', edit_study_group_path, :class => "btn btn-lg btn-primary" %>
+      <%= link_to 'Delete', @study_group, method: :delete, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
     <% end %>
     <%= link_to 'View Groups', study_groups_path, :class => "btn btn-lg btn-primary" %>
   </div>

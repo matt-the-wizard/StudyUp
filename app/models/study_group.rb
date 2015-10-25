@@ -7,9 +7,11 @@ class StudyGroup < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :topic
+  validates :student_limit, allow_blank: true, numericality: { only_integer: true }
 
   before_save :_validate_student_limit
   before_save :_assign_admin_student
+  after_save  :_destroy_group
 
   TITLE_FILTER = "Title"
   TOPIC_FILTER  = "Topic"
@@ -21,6 +23,24 @@ class StudyGroup < ActiveRecord::Base
 
   def available_space
     self.student_limit.to_i - self.students.count.to_i
+  end
+
+  # Join a group
+  def add_student a_student
+    self.students << a_student unless self.students.include? a_student.id
+    self.save!
+  end
+
+  # Leave a group
+  def remove_student a_student
+    # Just need to delete the relationship but not the actual record
+    new_student_list = []
+    self.students.each do |student|
+      new_student_list << student unless student.id == a_student.id
+    end
+    self.students = new_student_list
+    self.admin_student = nil if self.admin_student.id == a_student.id # Handle admin leaving group to force assign admin callback
+    self.save!
   end
 
   def self.search(params)
@@ -36,6 +56,7 @@ class StudyGroup < ActiveRecord::Base
   private
 
   def _validate_student_limit
+    return true if self.student_limit.nil?
     if available_space == 0
       errors.add(:students, "The student limit for this group is full, you cannot join this group.")
       return false
@@ -46,6 +67,10 @@ class StudyGroup < ActiveRecord::Base
 
   def _assign_admin_student
     self.admin_student = self.students.first if self.admin_student.nil? && self.students.count.to_i > 0
+  end
+
+  def _destroy_group
+    self.destroy! if self.admin_student.nil? && self.students.empty?
   end
 
 end
