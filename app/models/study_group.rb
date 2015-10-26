@@ -1,7 +1,7 @@
 class StudyGroup < ActiveRecord::Base
 
   has_and_belongs_to_many :students
-  has_many :study_sessions
+  has_many :study_sessions, dependent: :destroy
 
   belongs_to :admin_student, class_name: 'Student'
 

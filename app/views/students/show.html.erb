@@ -23,4 +23,53 @@
     <% end %>
     <%= link_to 'View Students', {controller: 'students', action: 'index'}, :class => "btn btn-lg btn-primary", :style => 'float: right;' %>
   </div>
+  <br>
+  <br>
+  <br>
+  <% unless @student.study_groups.empty? %>
+  <h2><%= @student.full_name %>'s Study Groups</h2>
+  <br>
+  <table class="table">
+    <thead>
+      <th>Title</th>
+      <th>Topic</th>
+      <th>Institution</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @student.study_groups.each do |study_group| %>
+        <tr>
+          <td><%= study_group.title %></td>
+          <td><%= study_group.topic %></td>
+          <td><%= study_group.institution %></td>
+          <td><%= link_to 'View', study_group %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <h2><%= @student.full_name %>'s Study Sessions</h2>
+  <table class="table">
+    <thead>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @student.study_groups.each do |study_group| %>
+        <% study_group.study_sessions.each do |study_session| %>
+        <tr>
+          <td><%= study_session.location %></td>
+          <td><%= study_session.day %></td>
+          <td><%= study_session.start_time.strftime("%H:%M %P") %></td>
+          <td><%= study_session.end_time.strftime("%H:%M %P") %></td>
+          <td><%= link_to 'View', study_session %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
 </div>

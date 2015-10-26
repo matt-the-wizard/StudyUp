@@ -20,12 +20,18 @@
     <th></th>
   </thead>
   <tbody>
-    <% @students.each do |student| %>
+    <% unless @students.empty? %>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.first_name %></td>
+          <td><%= student.last_name %></td>
+          <td><%= student.institution %></td>
+          <td><%= link_to 'View', student %></td>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
-        <td><%= student.first_name %></td>
-        <td><%= student.last_name %></td>
-        <td><%= student.institution %></td>
-        <td><%= link_to 'View', student %></td>
+        <td colspan='4'>There are no students available.</td>
       </tr>
     <% end %>
   </tbody>

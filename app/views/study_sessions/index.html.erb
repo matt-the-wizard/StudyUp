@@ -20,13 +20,19 @@
     <th></th>
   </thead>
   <tbody>
-    <% @study_sessions.each do |study_session| %>
+    <% unless @study_sessions.empty? %>
+      <% @study_sessions.each do |study_session| %>
+        <tr>
+          <td><%= study_session.location %></td>
+          <td><%= study_session.day %></td>
+          <td><%= study_session.start_time.strftime("%H:%M %P") %></td>
+          <td><%= study_session.end_time.strftime("%H:%M %P") %></td>
+          <td><%= link_to 'View', study_session %></td>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
-        <td><%= study_session.location %></td>
-        <td><%= study_session.day %></td>
-        <td><%= study_session.start_time.strftime("%H:%M %P") %></td>
-        <td><%= study_session.end_time.strftime("%H:%M %P") %></td>
-        <td><%= link_to 'View', study_session %></td>
+        <td colspan='5'>There are no study sessions available.</td>
       </tr>
     <% end %>
   </tbody>

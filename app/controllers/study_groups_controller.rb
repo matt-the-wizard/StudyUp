@@ -65,6 +65,7 @@ class StudyGroupsController < ApplicationController
     else
       flash[:error] = "There was an error creating your study group."
       @study_group.errors.each do |error|
+        debugger
         flash[:error] = error.to_s
       end
       render 'new'
