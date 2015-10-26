@@ -15,7 +15,7 @@
       <div class="container">
         <nav>
           <ul class="nav navbar-nav navbar-left">
-            <li><%= link_to "Home",   root_path %></li>
+            <li><%= link_to "Home", root_path %></li>
             <% if logged_in? %>
             <li><%= link_to "Profile", current_student %></li>
             <li><%= link_to "Log Out", logout_path, method: :delete %></li>
@@ -32,6 +32,8 @@
       </div>
     </header>
     <div class="container">
+      <%= image_tag "logo.png", :class => "img-responsive" %>
+      <br>
       <%= yield %>
     </div>
   </body>
