@@ -5,8 +5,8 @@ RSpec.describe Student, :type => :model do
     @student = Student.new(first_name: "Example",
                         last_name: "Student",
                         username: "user@example.edu",
-                        password: "foobar",
-                        password_confirmation: "foobar",
+                        password: "foobartest",
+                        password_confirmation: "foobartest",
                         institution: "Test")
 
   end
