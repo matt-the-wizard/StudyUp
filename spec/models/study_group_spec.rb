@@ -7,15 +7,15 @@ RSpec.describe StudyGroup, :type => :model do
     @student = Student.new(first_name: "Example",
                         last_name: "Student",
                         username: "user@example.edu",
-                        password: "foobar",
-                        password_confirmation: "foobar",
+                        password: "foobartest",
+                        password_confirmation: "foobartest",
                         institution: "Test")
 
     @student_two = Student.new(first_name: "Example2",
                         last_name: "Student2",
                         username: "user2@example.edu",
-                        password: "foobar2",
-                        password_confirmation: "foobar2",
+                        password: "foobar2test",
+                        password_confirmation: "foobar2test",
                         institution: "Test2")
 
     @study_group.admin_student = @student

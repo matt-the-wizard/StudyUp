@@ -6,22 +6,20 @@ class Student < ActiveRecord::Base
 
   validates_presence_of :first_name
   validates_presence_of :last_name
-  validates_presence_of :username
-  validates_presence_of :password_digest
   validates_presence_of :institution
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[edu]+\z/i
-  validates         :username,
-                    presence: true,
-                    length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX,
-                    message: "must have a valid .edu email address, Ex: sally@ggc.edu" },
-                    uniqueness: { case_sensitive: false }
 
-  # TODO: add password validation based on requirements
-  # validates        :password_digest,
-  #                  presence: true,
-  #                  lenght: { minimum: 6 },
+  validates :username,
+            presence: true,
+            length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX,
+            message: "must have a valid .edu email address, Ex: sally@ggc.edu" },
+            uniqueness: { case_sensitive: false }
+
+  validates :password,
+            length: { minimum: 6 },
+            presence: true
 
   before_save { self.username = username.downcase }
 
