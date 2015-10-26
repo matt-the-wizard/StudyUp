@@ -3,6 +3,7 @@
   <hr>
   <%= render 'shared/study_session_error_messages' %>
   <%= form_for @study_session do |f| %>
+    <%= f.label 'Group:' %>
     <%= f.collection_select(:study_group_id, current_student.study_groups, :id, :title) %>
     <%= f.label 'Location:' %>
     <%= f.text_field :location %>
@@ -20,7 +21,7 @@
     <%= f.text_field :notes %>
     <br>
     <div class="home-buttons">
-      <%= f.submit :class => "btn btn-lg btn-primary" %>
+      <%= f.submit 'Save', :class => "btn btn-lg btn-primary" %>
       <%= link_to 'Cancel', {controller: 'study_sessions', action: 'index'}, :class => "btn btn-lg btn-primary" %>
     </div>
   <% end %>

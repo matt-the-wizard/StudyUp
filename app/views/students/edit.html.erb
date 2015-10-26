@@ -3,12 +3,6 @@
   <hr>
   <%= render 'shared/student_error_messages' %>
   <%= form_for @student do |f| %>
-    <!-- <%= f.label 'Username:' %>
-    <%= f.text_field :username %>
-    <br>
-    <%= f.label 'Password:' %>
-    <%= f.text_field :password_digest %>
-    <br> -->
     <%= f.label 'First Name:' %>
     <%= f.text_field :first_name %>
     <br>
@@ -28,7 +22,7 @@
     <%= f.text_field :phone_number %>
     <br>
     <div class="home-buttons">
-      <%= f.submit :class => "btn btn-lg btn-primary" %>
+      <%= f.submit 'Save', :class => "btn btn-lg btn-primary" %>
       <%= link_to 'Cancel', {controller: 'students', action: 'index'}, :class => "btn btn-lg btn-primary" %>
       <%= link_to 'Delete', {controller: 'students', action: 'destroy'}, :class => "btn btn-lg btn-primary" %>
     </div>
