@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <h1>Session #<%= @study_session.id %> for <%= @study_session.study_group.topic %></h1>
+  <hr>
+  <div class="container-left">
+    <p>Location: <%= @study_session.location %></p>
+    <p>Start Time: <%= @study_session.start_time.strftime("%H:%M %P") %> </p>
+    <p>End Time: <%= @study_session.end_time.strftime("%H:%M %P") %></p>
+    <p>Notes: <%= @study_session.notes %> </p>
+    <p>Day: <%= @study_session.day %></p>
+  </div>
+  <div class="home-buttons">
+    <% if @study_session.study_group.admin_student.id == current_student.id %>
+      <%= link_to 'Edit', edit_study_session_path, :class => "btn btn-lg btn-primary" %>
+      <%= link_to 'Delete', @study_session, method: :delete, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+    <% end %>
+    <%= link_to 'View Sessions', study_sessions_path, :class => "btn btn-lg btn-primary" %>
+</div>
+</div>

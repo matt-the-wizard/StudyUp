@@ -6,22 +6,21 @@ class Student < ActiveRecord::Base
 
   validates_presence_of :first_name
   validates_presence_of :last_name
-  validates_presence_of :username
-  validates_presence_of :password_digest
   validates_presence_of :institution
+  validates_presence_of :password_digest
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[edu]+\z/i
-  validates         :username,
-                    presence: true,
-                    length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX,
-                    message: "must have a valid .edu email address, Ex: sally@ggc.edu" },
-                    uniqueness: { case_sensitive: false }
 
-  # TODO: add password validation based on requirements
-  # validates        :password_digest,
-  #                  presence: true,
-  #                  lenght: { minimum: 6 },
+  validates :username,
+            presence: true,
+            length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX,
+            message: "must have a valid .edu email address, Ex: sally@ggc.edu" },
+            uniqueness: { case_sensitive: false }
+
+  validates :password,
+            length: { minimum: 6 },
+            on: :create
 
   before_save { self.username = username.downcase }
 
@@ -31,14 +30,8 @@ class Student < ActiveRecord::Base
   LAST_NAME_FILTER  = "Last Name"
   INSTITUTION_FILTER  = "Institution"
 
-  def Student.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
-    BCrypt::Password.create(string, cost: cost)
-  end
-
-  def Student.new_token
-    SecureRandom.urlsafe_base64
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def remember
@@ -53,6 +46,16 @@ class Student < ActiveRecord::Base
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def Student.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
+  def Student.new_token
+    SecureRandom.urlsafe_base64
   end
 
   def self.search(params)

@@ -21,7 +21,9 @@
             <li><%= link_to "Log Out", logout_path, method: :delete %></li>
             <li><%= link_to "Students", { controller: "students", action: "index" } %></li>
             <li><%= link_to "Study Groups", { controller: "study_groups", action: "index" } %></li>
-            <li><%= link_to "Study Sessions", '#' %></li>
+            <% unless current_student.study_groups.empty? %>
+            <li><%= link_to "Study Sessions", { controller: "study_sessions", action: "index" } %></li>
+            <%  end  %>
             <%  else %>
             <li><%= link_to "Log in", login_path %></li>
             <%  end %>

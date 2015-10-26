@@ -20,12 +20,18 @@
     <th></th>
   </thead>
   <tbody>
-    <% @study_groups.each do |study_group| %>
+    <% unless @study_groups.empty? %>
+      <% @study_groups.each do |study_group| %>
+        <tr>
+          <td><%= study_group.title %></td>
+          <td><%= study_group.topic %></td>
+          <td><%= study_group.institution %></td>
+          <td><%= link_to 'View', study_group %></td>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
-        <td><%= study_group.title %></td>
-        <td><%= study_group.topic %></td>
-        <td><%= study_group.institution %></td>
-        <td><%= link_to 'View', study_group %></td>
+        <td colspan='4'>There are no study groups available.</td>
       </tr>
     <% end %>
   </tbody>

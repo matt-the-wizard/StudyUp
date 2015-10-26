@@ -2,8 +2,42 @@
   <h1><%= @study_group.title %></h1>
   <hr>
   <div class="container-left">
+    <p>Administrator: <%= @study_group.admin_student.full_name %></p>
     <p>Topic: <%= @study_group.topic %></p>
     <p>Institution: <%= @study_group.institution %> </p>
     <p>Student Limit: <%= @study_group.student_limit %></p>
+    <p>Available Space: <%= @study_group.available_space %></p>
   </div>
+  <div class="home-buttons">
+    <% if @study_group.student_in_group? current_student %>
+      <%= link_to 'Leave Group', leave_study_group_path, :class => "btn btn-lg btn-primary" %>
+    <% else %>
+      <%= link_to 'Join Group', join_study_group_path, :class => "btn btn-lg btn-primary" %>
+    <% end %>
+    <% if @study_group.admin_student.id == current_student.id %>
+      <%= link_to 'Edit', edit_study_group_path, :class => "btn btn-lg btn-primary" %>
+      <%= link_to 'Delete', @study_group, method: :delete, :class => "btn btn-lg btn-primary", :style => 'float: left;' %>
+    <% end %>
+    <%= link_to 'View Groups', study_groups_path, :class => "btn btn-lg btn-primary" %>
+  </div>
+  <br>
+  <h2>Students In <%= @study_group.title %></h2>
+  <table class="table">
+    <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Institution</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @study_group.students.each do |student| %>
+        <tr>
+          <td><%= student.first_name %></td>
+          <td><%= student.last_name %></td>
+          <td><%= student.institution %></td>
+          <td><%= link_to 'View', student %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

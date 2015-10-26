@@ -5,8 +5,8 @@ RSpec.describe Student, :type => :model do
     @student = Student.new(first_name: "Example",
                         last_name: "Student",
                         username: "user@example.edu",
-                        password: "foobar",
-                        password_confirmation: "foobar",
+                        password: "foobartest",
+                        password_confirmation: "foobartest",
                         institution: "Test")
 
   end
@@ -54,5 +54,14 @@ RSpec.describe Student, :type => :model do
     duplicate_user.username = @student.username.upcase
     @student.save
     expect(duplicate_user.valid?).to be false
+  end
+
+  it "password must be valid" do
+    @student.password = "     "
+    expect(@student.valid?).to be false
+    @student.password = nil
+    expect(@student.valid?).to be false
+    @student.password = "test5"
+    expect(@student.valid?).to be false
   end
 end
