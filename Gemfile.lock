@@ -1,3 +1,18 @@
+GIT
+  remote: git://github.com/briandavidwetzel/rapid_api.git
+  revision: 311ca004a31bf6b8be3e45015a79e22198461504
+  specs:
+    rapid_api (0.0.1)
+      actionpack (>= 4.0)
+
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: dc08f0ec80ce53825dc9bcba878660b13e99e310
+  branch: 0-9-stable
+  specs:
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -170,6 +185,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
   bcrypt (= 3.1.7)
   bootstrap-sass (= 3.2.0.0)
   byebug
@@ -178,6 +194,7 @@ DEPENDENCIES
   jquery-rails
   pg (= 0.17.1)
   rails (= 4.2.3)
+  rapid_api!
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

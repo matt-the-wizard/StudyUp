@@ -20,4 +20,10 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+  namespace :api do
+    resources :students, :only => [ :index, :show,] do
+      get 'access_profile' => 'students#access_profile', on: :collection
+    end
+  end
 end

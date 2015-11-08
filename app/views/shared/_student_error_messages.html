@@ -1,3 +1,4 @@
+<% if @student.present? %>
 <% if @student.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-danger">
@@ -9,4 +10,5 @@
     <% end %>
     </ul>
   </div>
+<% end %>
 <% end %>
