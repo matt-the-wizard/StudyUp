@@ -24,6 +24,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# Rapid api gem for rails api to serve json requests
+gem 'rapid_api', git: 'git://github.com/briandavidwetzel/rapid_api.git'
+# Serialize records as json
+gem 'active_model_serializers', :git => 'git://github.com/rails-api/active_model_serializers.git', branch: '0-9-stable'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -5,14 +5,20 @@ class SessionsController < ApplicationController
   end
 
   def create
-    student = Student.find_by(username: params[:session][:username].downcase)
-    if student && student.authenticate(params[:session][:password])
-      log_in student
-      params[:session][:remember_me] == '1' ? remember(student) : forget(student)
-      redirect_to student
+    @student = Student.find_by(username: params[:session][:username].downcase)
+    if @student && @student.authenticate(params[:session][:password])
+      log_in @student
+      params[:session][:remember_me] == '1' ? remember(@student) : forget(@student)
+      respond_to do |format|
+        format.html { redirect_to @student }
+        format.json { render json: @student, serializer: StudentSerializer }
+      end
     else
-      flash[:danger] = 'Invalid email/password combination'
-      render 'new'
+      @student.errors.add :base, 'Invalid email/password combination'
+      respond_to do |format|
+        format.html { render 'new' }
+        format.json { render json: @student.errors }
+      end
     end
   end
 
