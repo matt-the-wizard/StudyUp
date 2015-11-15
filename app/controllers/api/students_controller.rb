@@ -4,13 +4,17 @@ class Api::StudentsController < ::ApplicationController
   rapid_actions
 
   def access_profile
-    # NOTE: Need encryption of password sent over the network
+    # NOTE: Need authentication token
     @student = Student.where(username: params[:username]).first
-    if @student.authenticate params[:password]
-      render json: @student, serializer: StudentSerializer
+    if @student.present?
+      if @student.authenticate params[:password]
+        render json: @student, serializer: StudentSerializer
+      else
+        render json: {"Study Up Authentication Error" => "Invalid password for #{@student.full_name}"}
+      end
     else
-      @student.errors.add(:base, "Invalid username and password")
-      render json: @student.errors
+      render json: {"Study Up Authentication Error" => "User #{params[:username]} does not exist"}
     end
   end
+
 end
