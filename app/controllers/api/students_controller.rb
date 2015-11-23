@@ -3,8 +3,13 @@ class Api::StudentsController < ::ApplicationController
 
   rapid_actions
 
+  permit_params :username,
+                :password,
+                :first_name,
+                :last_name,
+                :institution
+
   def access_profile
-    # NOTE: Need authentication token
     @student = Student.where(username: params[:username]).first
     if @student.present?
       if @student.authenticate params[:password]
