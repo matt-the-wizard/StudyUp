@@ -22,9 +22,8 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   namespace :api do
-    resources :students, :only => [ :index, :show,] do
+    resources :students, :only => [ :index, :show, :create ] do
       get 'access_profile' => 'students#access_profile', on: :collection
-      post 'create_account' => 'students#create_account', on: :member
     end
   end
 end
