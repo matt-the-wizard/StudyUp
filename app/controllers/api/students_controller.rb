@@ -22,4 +22,13 @@ class Api::StudentsController < ::ApplicationController
     end
   end
 
+  def create
+    @student = Student.new _student_params
+    if @student.save
+      render json: @student, serializer: StudentSerializer
+    else
+      render json: {"Study Up Authentication Error" => @student.errors}
+    end
+  end
+
 end

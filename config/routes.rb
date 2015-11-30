@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :students, :only => [ :index, :show,] do
       get 'access_profile' => 'students#access_profile', on: :collection
+      post 'create_account' => 'students#create_account', on: :member
     end
   end
 end

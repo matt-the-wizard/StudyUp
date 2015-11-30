@@ -67,18 +67,4 @@ class StudentsController < ApplicationController
   def search
     redirect_to :action => :index, :students => params
   end
-
-  private
-
-  def _student_params
-    params.require(:student).permit(:first_name,
-                                    :last_name,
-                                    :username,
-                                    :password,
-                                    :password_confirmation,
-                                    :institution,
-                                    :school_of_study,
-                                    :discipline,
-                                    :phone_number)
-  end
 end

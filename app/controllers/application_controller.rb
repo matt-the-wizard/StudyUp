@@ -19,4 +19,16 @@ class ApplicationController < ActionController::Base
       redirect_to search_study_groups
     end
   end
+
+  def _student_params
+    params.require(:student).permit(:first_name,
+                                    :last_name,
+                                    :username,
+                                    :password,
+                                    :password_confirmation,
+                                    :institution,
+                                    :school_of_study,
+                                    :discipline,
+                                    :phone_number)
+  end
 end
