@@ -1,5 +1,5 @@
 class Api::StudentsController < ::ApplicationController
-  skip_before_action :require_login, :only => [:index, :show, :access_profile, :create]
+  skip_before_action :require_login, :only => [:index, :show, :access_profile, :create_account]
 
   rapid_actions
 
@@ -16,7 +16,7 @@ class Api::StudentsController < ::ApplicationController
     end
   end
 
-  def create
+  def create_account
     @student = Student.new params.permit(:username, :password, :password_confirmation, :first_name, :last_name, :institution)
     if @student.save
       render json: @student, serializer: StudentSerializer
