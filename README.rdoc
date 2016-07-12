@@ -1,6 +1,3 @@
 == README
 
-This is STUDY UP! Invite your friends to join study groups and study sessions
-to perform better in the classroom!
-
-Still in development. 
+Capstone project for school. Invite friends to join study groups and study sessions.
